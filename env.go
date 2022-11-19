@@ -20,10 +20,14 @@ func NewEnv(ua, referrer string) *Env {
 }
 
 func GetEnvKey(ua, referrer string) string {
+	if len(ua) < 1 && len(referrer) < 1 {
+		return ""
+	}
 	return NewEnv(ua, referrer).GetKey()
 }
 
 func (c *Env) GetKey() string {
+
 	var s = make([]string, 0)
 	// 对于小程序环境来说 通过referrer 判断相对比较准确
 	if c.refInst.IsMini() {
