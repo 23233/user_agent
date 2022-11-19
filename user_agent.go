@@ -104,16 +104,21 @@ func parseSection(ua string, index *int) (s section) {
 		*index++
 		buffer = readUntil(ua, index, ')', true)
 
+		bfStr := string(buffer)
 		var comment = make([]string, 0)
 		for _, sp := range CommentSplit {
-			if strings.Contains(string(buffer), sp) {
-				comment = append(comment, strings.Split(string(buffer), sp)...)
+			if strings.Contains(bfStr, sp) {
+				comment = append(comment, strings.Split(bfStr, sp)...)
 				break
 			}
 		}
 		if len(comment) > 0 {
 			s.comment = comment
+		} else if len(bfStr) > 0 {
+			s.comment = []string{bfStr}
 		}
+		//s.comment = strings.Split(bfStr, "; ")
+
 		*index++
 	}
 

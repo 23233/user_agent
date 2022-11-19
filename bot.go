@@ -5,6 +5,7 @@
 package user_agent
 
 import (
+	"net/url"
 	"regexp"
 	"strings"
 )
@@ -38,6 +39,14 @@ func getFromSite(comment []string) string {
 		// field of the comment.
 		return strings.TrimSpace(comment[idx-1])
 	}
+
+	commentStr := strings.Join(comment, "/")
+	result := botFromSiteRegexp.FindStringSubmatch(commentStr)
+	if len(result) == 1 {
+		u, _ := url.Parse(result[0])
+		return u.Host
+	}
+
 	return ""
 }
 

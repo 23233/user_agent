@@ -74,11 +74,13 @@ var uastrings = []struct {
 		ua:       "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
 		expected: "Mozilla:5.0 Browser:Yahoo! Slurp Bot:true Mobile:false",
 	},
+
 	{
 		title:    "FacebookExternalHit",
 		ua:       "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
 		expected: "Browser:facebookexternalhit-1.1 Bot:true Mobile:false",
 	},
+
 	{
 		title:    "FacebookPlatform",
 		ua:       "facebookplatform/1.0 (+http://developers.facebook.com)",
@@ -761,6 +763,10 @@ func beautify(ua *UserAgent) (s string) {
 // The test suite.
 func TestUserAgent(t *testing.T) {
 	for _, tt := range uastrings {
+		//
+		//if tt.title != "OperaWinNoLocale" {
+		//	continue
+		//}
 		ua := New(tt.ua)
 		got := beautify(ua)
 		if tt.expected != got {
