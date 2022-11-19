@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://github.com/mssola/user_agent/actions/workflows/ci.yml" title="Travis CI status for the default branch"><img src="https://github.com/mssola/user_agent/actions/workflows/ci.yml/badge.svg" alt="Build Status for the default branch" /></a>
-  <a href="https://pkg.go.dev/github.com/mssola/user_agent" title="go.dev page"><img src="https://pkg.go.dev/badge/github.com/mssola/user_agent" alt="go.dev page" /></a>
+  <a href="https://github.com/23233/user_agent/actions/workflows/ci.yml" title="Travis CI status for the default branch"><img src="https://github.com/23233/user_agent/actions/workflows/ci.yml/badge.svg" alt="Build Status for the default branch" /></a>
+  <a href="https://pkg.go.dev/github.com/23233/user_agent" title="go.dev page"><img src="https://pkg.go.dev/badge/github.com/23233/user_agent" alt="go.dev page" /></a>
   <a href="https://en.wikipedia.org/wiki/MIT_License" rel="nofollow"><img alt="MIT" src="https://img.shields.io/badge/license-MIT-blue.svg" style="max-width:100%;"></a>
 </p>
 
@@ -14,7 +14,7 @@ package main
 import (
     "fmt"
 
-    "github.com/mssola/user_agent"
+    "github.com/23233/user_agent"
 )
 
 func main() {
@@ -52,12 +52,12 @@ func main() {
 ```
 
 If you want to read the full API documentation simply check
-[godoc](https://pkg.go.dev/github.com/mssola/user_agent).
+[godoc](https://pkg.go.dev/github.com/23233/user_agent).
 
 ## Installation
 
 ```
-go get -u github.com/mssola/user_agent
+go get -u github.com/23233/user_agent
 ```
 
 ## Contributing

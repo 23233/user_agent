@@ -10,6 +10,10 @@ package user_agent
 
 import "strings"
 
+var (
+	CommentSplit = []string{"; ", "/"}
+)
+
 // A section contains the name of the product, its version and
 // an optional comment.
 type section struct {
@@ -28,6 +32,8 @@ type UserAgent struct {
 	localization string
 	model        string
 	browser      Browser
+	wechat       Wechat
+	qq           Qq
 	bot          bool
 	mobile       bool
 	undecided    bool
@@ -97,7 +103,17 @@ func parseSection(ua string, index *int) (s section) {
 	if *index < len(ua) && ua[*index] == '(' {
 		*index++
 		buffer = readUntil(ua, index, ')', true)
-		s.comment = strings.Split(string(buffer), "; ")
+
+		var comment = make([]string, 0)
+		for _, sp := range CommentSplit {
+			if strings.Contains(string(buffer), sp) {
+				comment = append(comment, strings.Split(string(buffer), sp)...)
+				break
+			}
+		}
+		if len(comment) > 0 {
+			s.comment = comment
+		}
 		*index++
 	}
 
@@ -161,6 +177,8 @@ func (p *UserAgent) Parse(ua string) {
 		p.detectBrowser(sections)
 		p.detectOS(sections[0])
 		p.detectModel(sections[0])
+		p.detectWechat(sections)
+		p.detectQq(sections)
 
 		if p.undecided {
 			p.checkBot(sections)
