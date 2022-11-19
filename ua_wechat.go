@@ -20,7 +20,6 @@ type Wechat struct {
 	version     string
 	workVersion string
 	mini        bool
-	browser     bool
 	in          bool
 }
 
